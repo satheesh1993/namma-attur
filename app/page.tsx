@@ -199,17 +199,55 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white mt-10">
-        <div className="max-w-7xl mx-auto py-10 text-center">
-          <h3 className="text-2xl font-bold">
-            நம்ம ஆத்தூர்
-          </h3>
+      {/* Footer */}
 
-          <p className="text-gray-400 mt-3">
-            ஆத்தூர் தாலுக்கா தகவல் மையம்
-          </p>
-        </div>
-      </footer>
+<footer className="bg-gray-900 text-white mt-10">
+
+  <div className="max-w-7xl mx-auto py-10 text-center px-6">
+
+    <h3 className="text-2xl font-bold">
+      நம்ம ஆத்தூர்
+    </h3>
+
+    <p className="text-gray-400 mt-3">
+      ஆத்தூர் தாலுக்கா தகவல் மையம்
+    </p>
+
+    <div className="border-t border-gray-700 my-6"></div>
+
+    <p className="text-sm text-gray-400 leading-7 max-w-4xl mx-auto">
+
+      <strong>பொறுப்புத் துறப்பு:</strong> நம்ம ஆத்தூர் என்பது
+      ஆத்தூர் தாலுக்காவை பற்றிய தகவல்களை பொதுமக்களுடன்
+      பகிர்வதற்காக உருவாக்கப்பட்ட தனியார் சமூக தகவல் தளம்.
+      இந்த இணையதளம் எந்த அரசு துறை, அரசு நிறுவனம்,
+      உள்ளாட்சி அமைப்பு அல்லது அரசு சார்ந்த அமைப்புகளுடனும்
+      தொடர்புடையதல்ல.
+      அரசு சேவைகள் மற்றும் அறிவிப்புகள் தொடர்பான தகவல்களுக்கு
+      அதிகாரப்பூர்வ அரசு இணையதளங்களைப் பயன்படுத்துமாறு
+      பார்வையாளர்கள் கேட்டுக்கொள்ளப்படுகிறார்கள்.
+
+    </p>
+
+    <p className="text-sm text-gray-500 mt-4 max-w-4xl mx-auto">
+
+      <strong>Disclaimer:</strong> Namma Attur is an independent
+      community information portal created to share information
+      related to Attur Taluk. This website is not affiliated with,
+      endorsed by, sponsored by, or operated by any Government
+      department, Government agency, or local authority.
+      Visitors are advised to verify official information with the
+      respective Government websites and offices.
+
+    </p>
+
+    <p className="text-xs text-gray-500 mt-6">
+      © 2026 Namma Attur. All Rights Reserved.
+    </p>
+
+  </div>
+
+</footer>
     </main>
   );
 }
