@@ -1,3 +1,6 @@
+import Navbar from "@/components/Navbar";
+
+
 export default function Home() {
   const menuItems = [
     { icon: "💼", title: "வேலைவாய்ப்புகள்" },
