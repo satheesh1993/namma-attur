@@ -1,59 +1,69 @@
+"use client";
+
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { useLanguage } from "@/components/LanguageContext";
+import { translations } from "@/data/translations";
 
 export default function TouristPlacesPage() {
+  const { language } = useLanguage();
+  const t = translations[language];
+
   return (
     <main className="min-h-screen bg-slate-100">
       <Navbar />
 
+      {/* Hero Section */}
       <section className="bg-green-700 text-white py-16">
         <div className="max-w-6xl mx-auto px-6">
           <h1 className="text-5xl font-bold">
-            சுற்றுலா தலங்கள்
+            {t.touristPlaces}
           </h1>
 
           <p className="mt-3">
-            ஆத்தூர் தாலுக்காவின் முக்கிய சுற்றுலா இடங்கள்
+            {t.touristPlacesSubtitle}
           </p>
         </div>
       </section>
 
+      {/* Tourist Places */}
       <section className="max-w-6xl mx-auto px-6 py-10">
-
         <div className="grid md:grid-cols-3 gap-6">
 
+          {/* Attur Fort */}
           <div className="bg-white rounded-2xl shadow-lg p-6">
             <h2 className="text-2xl font-bold mb-3">
-              🏰 ஆத்தூர் கோட்டை
+              🏰 {t.atturFort}
             </h2>
 
             <p>
-              ஆத்தூரின் வரலாற்று சிறப்புமிக்க கோட்டை.
+              {t.atturFortDescription}
             </p>
           </div>
 
+          {/* Kalvarayan Hills */}
           <div className="bg-white rounded-2xl shadow-lg p-6">
             <h2 className="text-2xl font-bold mb-3">
-              ⛰️ கல்வராயன் மலை
+              ⛰️ {t.kalvarayanHills}
             </h2>
 
             <p>
-              இயற்கை எழில் நிறைந்த மலைப்பகுதி.
+              {t.kalvarayanHillsDescription}
             </p>
           </div>
 
+          {/* Vasista River */}
           <div className="bg-white rounded-2xl shadow-lg p-6">
             <h2 className="text-2xl font-bold mb-3">
-              🌊 வசிஷ்டா நதி
+              🌊 {t.vasistaRiver}
             </h2>
 
             <p>
-              ஆத்தூர் பகுதியின் முக்கிய நதி.
+              {t.vasistaRiverDescription}
             </p>
           </div>
 
         </div>
-
       </section>
 
       <Footer />

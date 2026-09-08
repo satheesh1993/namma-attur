@@ -1,7 +1,14 @@
+"use client";
+
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { useLanguage } from "@/components/LanguageContext";
+import { translations } from "@/data/translations";
 
 export default function AboutAtturPage() {
+  const { language } = useLanguage();
+  const t = translations[language];
+
   return (
     <main className="min-h-screen bg-slate-100">
       <Navbar />
@@ -10,12 +17,11 @@ export default function AboutAtturPage() {
       <section className="bg-green-700 text-white py-16">
         <div className="max-w-6xl mx-auto px-6">
           <h1 className="text-5xl font-bold mb-4">
-            ஆத்தூர் பற்றி
+            {t.aboutAtturTitle}
           </h1>
 
           <p className="text-xl">
-            சேலம் மாவட்டத்தில் அமைந்துள்ள வரலாற்று மற்றும் இயற்கை வளமிக்க
-            ஆத்தூர் தாலுக்கா
+            {t.aboutAtturSubtitle}
           </p>
         </div>
       </section>
@@ -24,76 +30,73 @@ export default function AboutAtturPage() {
       <section className="max-w-6xl mx-auto px-6 py-10">
         <div className="bg-white rounded-2xl shadow-lg p-8">
 
+          {/* Introduction */}
           <h2 className="text-3xl font-bold text-green-700 mb-4">
-            அறிமுகம்
+            {t.aboutIntroductionTitle}
           </h2>
 
           <p className="text-gray-700 leading-8 mb-6">
-            ஆத்தூர் என்பது தமிழ்நாட்டின் சேலம் மாவட்டத்தில் அமைந்துள்ள
-            முக்கிய தாலுக்காக்களில் ஒன்றாகும். வரலாற்று சிறப்புமிக்க
-            ஆத்தூர் கோட்டை, வசிஷ்டா நதி மற்றும் கல்வராயன் மலைப்பகுதிகளால்
-            இப்பகுதி அறியப்படுகிறது.
+            {t.aboutIntroduction}
           </p>
 
+          {/* Geography */}
           <h2 className="text-3xl font-bold text-green-700 mb-4">
-            புவியியல் அமைப்பு
+            {t.aboutGeographyTitle}
           </h2>
 
           <p className="text-gray-700 leading-8 mb-6">
-            ஆத்தூர் தாலுக்கா சேலம் மாவட்டத்தின் கிழக்குப் பகுதியில்
-            அமைந்துள்ளது. விவசாயம், சிறு தொழில்கள் மற்றும் வணிக நடவடிக்கைகள்
-            இப்பகுதியின் பொருளாதாரத்திற்கு முக்கிய பங்களிப்பை வழங்குகின்றன.
+            {t.aboutGeography}
           </p>
 
+          {/* Important Areas */}
           <h2 className="text-3xl font-bold text-green-700 mb-4">
-            முக்கிய பகுதிகள்
+            {t.aboutImportantAreasTitle}
           </h2>
 
           <ul className="list-disc pl-8 space-y-2 mb-8">
-            <li>ஆத்தூர்</li>
-            <li>நரசிங்கபுரம்</li>
-            <li>ஆறகளூர்</li>
-            <li>தலைவாசல்</li>
-            <li>கங்கவல்லி</li>
-            <li>பெத்தநாயக்கன்பாளையம்</li>
+            <li>{t.attur}</li>
+            <li>{t.narasingapuram}</li>
+            <li>{t.arakalur}</li>
+            <li>{t.thalaivasal}</li>
+            <li>{t.gangavalli}</li>
+            <li>{t.pethanaickenpalayam}</li>
           </ul>
 
+          {/* Historical Significance */}
           <h2 className="text-3xl font-bold text-green-700 mb-4">
-            வரலாற்று முக்கியத்துவம்
+            {t.aboutHistoricalTitle}
           </h2>
 
           <p className="text-gray-700 leading-8 mb-6">
-            ஆத்தூர் கோட்டை இப்பகுதியின் முக்கிய வரலாற்றுச் சின்னமாக
-            விளங்குகிறது. பல்வேறு ஆட்சிக் காலங்களில் முக்கிய நிர்வாக
-            மையமாக ஆத்தூர் இருந்துள்ளது.
+            {t.aboutHistorical}
           </p>
 
+          {/* Natural Resources */}
           <h2 className="text-3xl font-bold text-green-700 mb-4">
-            இயற்கை வளங்கள்
+            {t.aboutNaturalResourcesTitle}
           </h2>
 
           <p className="text-gray-700 leading-8 mb-6">
-            கல்வராயன் மலை, வசிஷ்டா நதி மற்றும் சுற்றியுள்ள விவசாய நிலங்கள்
-            ஆத்தூரின் முக்கிய இயற்கை வளங்களாகும். மாம்பழ சாகுபடிக்கும்
-            இந்த பகுதி பிரபலமானது.
+            {t.aboutNaturalResources}
           </p>
 
+          {/* Tourist Places */}
           <h2 className="text-3xl font-bold text-green-700 mb-4">
-            முக்கிய சுற்றுலா தலங்கள்
+            {t.aboutTouristPlacesTitle}
           </h2>
 
           <div className="grid md:grid-cols-3 gap-4">
 
             <div className="border rounded-xl p-4 hover:bg-green-50">
-              🏰 ஆத்தூர் கோட்டை
+              🏰 {t.atturFort}
             </div>
 
             <div className="border rounded-xl p-4 hover:bg-green-50">
-              ⛰️ கல்வராயன் மலை
+              ⛰️ {t.kalvarayanHills}
             </div>
 
             <div className="border rounded-xl p-4 hover:bg-green-50">
-              🌊 வசிஷ்டா நதி
+              🌊 {t.vasistaRiver}
             </div>
 
           </div>
