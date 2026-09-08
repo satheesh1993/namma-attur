@@ -16,7 +16,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-slate-100">
-      <Navbar />
+      
       {/* Top Bar */}
       <div className="bg-green-900 text-white">
         <div className="max-w-7xl mx-auto px-6 py-2 flex justify-between">
@@ -254,7 +254,7 @@ export default function Home() {
 
 </footer>
 
-<Footer />
+
     </main>
   );
 }
