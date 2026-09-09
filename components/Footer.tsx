@@ -19,12 +19,6 @@ export default function Footer() {
           தனியார் தகவல் தளம்.
         </p>
 
-        <p className="text-sm text-gray-500 mt-3 max-w-4xl mx-auto">
-          This website is an independent community information portal
-          for Attur Taluk and is not affiliated with any Government
-          department or agency.
-        </p>
-
         <p className="text-xs text-gray-500 mt-6">
           © 2026 Namma Attur. All Rights Reserved.
         </p>
