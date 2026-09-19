@@ -58,7 +58,7 @@ export default function Navbar() {
     },
     {
       name: t.government,
-      href: "/#government",
+      href: "/government",
       icon: UsersRound,
       color: "text-purple-600",
     },

@@ -1,5 +1,43 @@
 export const jobs = [
   {
+    id: "job-005",
+
+    title: {
+      ta: "தொழிற்சாலை ஆபரேட்டர்",
+      en: "testing",
+    },
+
+    company: {
+      ta: "Attur Industries",
+      en: "Attur Industries",
+    },
+
+    location: {
+      ta: "ஆத்தூர்",
+      en: "Attur",
+    },
+
+    description: {
+      ta: "தொழிற்சாலை இயந்திரங்களை இயக்கி உற்பத்தி பணிகளை மேற்கொள்ளும் பணி.",
+      en: "Operate factory machinery and support production activities.",
+    },
+
+    salary: {
+      ta: "₹14,000 - ₹22,000",
+      en: "₹14,000 - ₹22,000",
+    },
+
+    type: {
+      ta: "முழுநேரம்",
+      en: "Full Time",
+    },
+
+    postedDate: "2026-09-18",
+
+    contact: "9876543212",
+  },
+
+  {
     id: "job-001",
 
     title: {

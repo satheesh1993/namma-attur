@@ -1,46 +1,124 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
+
 import Navbar from "@/components/Navbar";
 import { useLanguage } from "@/components/LanguageContext";
 import { translations } from "@/data/translations";
 
+import { jobs } from "@/data/jobs";
+import { posts } from "@/data/posts";
+import { businesses } from "@/data/businesses";
+
 export default function Home() {
-const { language } = useLanguage();
-const router = useRouter();
+  const { language } = useLanguage();
+  const router = useRouter();
 
-const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
 
-const handleSearch = () => {
-  const query = searchQuery.trim();
+  const t = translations[language];
 
-  if (!query) {
-    return;
-  }
+  // =========================
+  // SEARCH
+  // =========================
 
-  router.push(`/search?q=${encodeURIComponent(query)}`);
-};
+  const handleSearch = () => {
+    const query = searchQuery.trim();
 
-const t = translations[language];
+    if (!query) {
+      return;
+    }
+
+    router.push(`/search?q=${encodeURIComponent(query)}`);
+  };
+
+  // =========================
+  // LATEST NEWS
+  // =========================
+
+  const latestPosts = [...posts]
+    .sort(
+      (a, b) =>
+        new Date(b.publishedDate).getTime() -
+        new Date(a.publishedDate).getTime()
+    )
+    .slice(0, 3);
+
+  // =========================
+  // LATEST JOBS
+  // =========================
+
+  const latestJobs = [...jobs]
+    .sort(
+      (a, b) =>
+        new Date(b.postedDate).getTime() -
+        new Date(a.postedDate).getTime()
+    )
+    .slice(0, 4);
+
+  // =========================
+  // FEATURED BUSINESSES
+  // =========================
+
+  const featuredBusinesses = businesses.slice(0, 3);
+
+  // =========================
+  // QUICK ACCESS MENU
+  // =========================
 
   const menuItems = [
-    { icon: "💼", title: t.categoryJobs, link: "#jobs" },
-    { icon: "🏪", title: t.categoryBusiness, link: "#businesses" },
-    { icon: "🏞️", title: t.categoryTourism, link: "#tourism" },
-    { icon: "🏛️", title: t.categoryGovernment, link: "#government" },
-    { icon: "📅", title: t.categoryEvents, link: "#events" },
-    { icon: "🛕", title: t.categoryTemples, link: "#temples" },
-    { icon: "🚑", title: t.categoryEmergency, link: "#emergency" },
-    { icon: "🚌", title: t.categoryBus, link: "#bus" },
+    {
+      icon: "💼",
+      title: t.categoryJobs,
+      link: "/jobs",
+    },
+    {
+      icon: "🏪",
+      title: t.categoryBusiness,
+      link: "/businesses",
+    },
+    {
+      icon: "🏞️",
+      title: t.categoryTourism,
+      link: "/tourist-places",
+    },
+    {
+      icon: "🏛️",
+      title: t.categoryGovernment,
+      link: "/government",
+    },
+    {
+      icon: "📅",
+      title: t.categoryEvents,
+      link: "/events",
+    },
+    {
+      icon: "🛕",
+      title: t.categoryTemples,
+      link: "/temples",
+    },
+    {
+      icon: "🚑",
+      title: t.categoryEmergency,
+      link: "/emergency",
+    },
+    {
+      icon: "🚌",
+      title: t.categoryBus,
+      link: "/transport",
+    },
   ];
 
   return (
     <main className="min-h-screen bg-slate-100">
-
       <Navbar />
 
-      {/* Hero Section */}
+      {/* =========================
+          HERO SECTION
+      ========================== */}
+
       <section
         className="relative h-[500px] flex items-center justify-center"
         style={{
@@ -53,7 +131,6 @@ const t = translations[language];
         <div className="absolute inset-0 bg-black/60"></div>
 
         <div className="relative z-10 text-center text-white px-6">
-
           <h2 className="text-6xl font-bold mb-4">
             {t.heroTitle}
           </h2>
@@ -62,9 +139,10 @@ const t = translations[language];
             {t.heroSubtitle}
           </p>
 
-          <div className="max-w-3xl bg-white rounded-2xl mx-auto p-2 flex shadow-2xl">
+          {/* SEARCH */}
 
-           <input
+          <div className="max-w-3xl bg-white rounded-2xl mx-auto p-2 flex shadow-2xl">
+            <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
@@ -104,116 +182,282 @@ const t = translations[language];
             >
               🔍 {t.search}
             </button>
-
           </div>
         </div>
       </section>
 
-      {/* Quick Access Menu */}
+      {/* =========================
+          QUICK ACCESS MENU
+      ========================== */}
+
       <section className="max-w-7xl mx-auto px-6 -mt-16 relative z-20">
-
         <div className="bg-white rounded-3xl shadow-xl">
-
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8">
+            {menuItems.map((item) => {
+              const isPageLink = item.link.startsWith("/");
 
-            {menuItems.map((item) => (
-              <a
-                key={item.title}
-                href={item.link}
-                className="p-6 flex flex-col items-center border-r border-gray-100 hover:bg-gray-50 transition"
-              >
+              if (isPageLink) {
+                return (
+                  <Link
+                    key={item.title}
+                    href={item.link}
+                    className="
+                      p-6
+                      flex
+                      flex-col
+                      items-center
+                      border-r
+                      border-gray-100
+                      hover:bg-gray-50
+                      transition
+                      cursor-pointer
+                    "
+                  >
+                    <div className="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center text-3xl">
+                      {item.icon}
+                    </div>
 
-                <div className="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center text-3xl">
-                  {item.icon}
-                </div>
+                    <p className="mt-4 text-center text-sm font-medium">
+                      {item.title}
+                    </p>
+                  </Link>
+                );
+              }
 
-                <p className="mt-4 text-center text-sm font-medium">
-                  {item.title}
-                </p>
+              return (
+                <a
+                  key={item.title}
+                  href={item.link}
+                  className="
+                    p-6
+                    flex
+                    flex-col
+                    items-center
+                    border-r
+                    border-gray-100
+                    hover:bg-gray-50
+                    transition
+                    cursor-pointer
+                  "
+                >
+                  <div className="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center text-3xl">
+                    {item.icon}
+                  </div>
 
-              </a>
-            ))}
-
+                  <p className="mt-4 text-center text-sm font-medium">
+                    {item.title}
+                  </p>
+                </a>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* Advertisement */}
-      <section className="max-w-7xl mx-auto px-6 mt-6">
+      {/* =========================
+          ADVERTISEMENT
+      ========================== */}
 
+      <section className="max-w-7xl mx-auto px-6 mt-6">
         <div className="bg-yellow-50 border border-yellow-300 rounded-xl p-4 text-center text-xl font-semibold">
           📢 {t.advertisement}
         </div>
-
       </section>
 
-      {/* Dashboard Cards */}
+      {/* =========================
+          DASHBOARD CARDS
+      ========================== */}
+
       <section className="max-w-7xl mx-auto p-6 grid lg:grid-cols-4 gap-6">
 
-        {/* News */}
+        {/* =========================
+            LATEST NEWS
+        ========================== */}
+
         <div
           id="news"
           className="bg-white rounded-2xl shadow-lg p-5"
         >
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="font-bold text-blue-700">
+              📰 {t.latestNews}
+            </h3>
 
-          <h3 className="font-bold text-blue-700 mb-4">
-            📰 {t.latestNews}
-          </h3>
+            <button
+              onClick={() => router.push("/news")}
+              className="text-sm text-blue-600 hover:underline"
+            >
+              {language === "ta"
+                ? "அனைத்தும்"
+                : "View All"}
+            </button>
+          </div>
 
-          <ul className="space-y-3">
-            <li>{t.news1}</li>
-            <li>{t.news2}</li>
-            <li>{t.news3}</li>
-          </ul>
+          <div className="space-y-4">
+            {latestPosts.map((post) => (
+              <button
+                key={post.id}
+                onClick={() =>
+                  router.push(`/news/${post.id}`)
+                }
+                className="
+                  block
+                  w-full
+                  text-left
+                  border-b
+                  border-gray-100
+                  pb-3
+                  last:border-0
+                  hover:bg-blue-50
+                  rounded-lg
+                  p-2
+                  transition
+                "
+              >
+                <p className="font-medium text-gray-800">
+                  {post.title[language]}
+                </p>
 
+                <p className="text-xs text-gray-500 mt-1">
+                  📅 {post.publishedDate}
+                </p>
+              </button>
+            ))}
+          </div>
         </div>
 
-        {/* Jobs */}
+        {/* =========================
+            LATEST JOBS
+        ========================== */}
+
         <div
           id="jobs"
           className="bg-white rounded-2xl shadow-lg p-5"
         >
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="font-bold text-green-700">
+              💼 {t.latestJobs}
+            </h3>
 
-          <h3 className="font-bold text-blue-700 mb-4">
-            💼 {t.latestJobs}
-          </h3>
+            <button
+              onClick={() => router.push("/jobs")}
+              className="text-sm text-green-600 hover:underline"
+            >
+              {language === "ta"
+                ? "அனைத்தும்"
+                : "View All"}
+            </button>
+          </div>
 
-          <ul className="space-y-3">
-            <li>{t.job1}</li>
-            <li>{t.job2}</li>
-            <li>{t.job3}</li>
-            <li>{t.job4}</li>
-          </ul>
+          <div className="space-y-4">
+            {latestJobs.map((job) => (
+              <button
+                key={job.id}
+                onClick={() =>
+                  router.push(`/jobs/${job.id}`)
+                }
+                className="
+                  block
+                  w-full
+                  text-left
+                  border-b
+                  border-gray-100
+                  pb-3
+                  last:border-0
+                  hover:bg-green-50
+                  rounded-lg
+                  p-2
+                  transition
+                "
+              >
+                <p className="font-medium text-gray-800">
+                  {job.title[language]}
+                </p>
 
+                <p className="text-sm text-gray-600 mt-1">
+                  🏢 {job.company[language]}
+                </p>
+
+                <p className="text-xs text-gray-500 mt-1">
+                  📍 {job.location[language]}
+                </p>
+              </button>
+            ))}
+          </div>
         </div>
 
-        {/* Business */}
+        {/* =========================
+            FEATURED BUSINESSES
+        ========================== */}
+
         <div
           id="businesses"
           className="bg-white rounded-2xl shadow-lg p-5"
         >
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="font-bold text-purple-700">
+              🏪 {t.featuredBusinesses}
+            </h3>
 
-          <h3 className="font-bold text-purple-700 mb-4">
-            🏪 {t.featuredBusinesses}
-          </h3>
+            <button
+              onClick={() => router.push("/businesses")}
+              className="text-sm text-purple-600 hover:underline"
+            >
+              {language === "ta"
+                ? "அனைத்தும்"
+                : "View All"}
+            </button>
+          </div>
 
-          <ul className="space-y-3">
-            <li>{t.business1}</li>
-            <li>{t.business2}</li>
-            <li>{t.business3}</li>
-          </ul>
+          <div className="space-y-4">
+            {featuredBusinesses.map((business) => (
+              <button
+                key={business.id}
+                onClick={() =>
+                  router.push(
+                    `/businesses/${business.id}`
+                  )
+                }
+                className="
+                  block
+                  w-full
+                  text-left
+                  border-b
+                  border-gray-100
+                  pb-3
+                  last:border-0
+                  hover:bg-purple-50
+                  rounded-lg
+                  p-2
+                  transition
+                "
+              >
+                <p className="font-medium text-gray-800">
+                  {business.name[language]}
+                </p>
 
+                <p className="text-sm text-gray-600 mt-1">
+                  🏷️ {business.category[language]}
+                </p>
+
+                <p className="text-xs text-gray-500 mt-1">
+                  📍 {business.location[language]}
+                </p>
+              </button>
+            ))}
+          </div>
         </div>
 
-        {/* Market Prices */}
-        <div className="bg-white rounded-2xl shadow-lg p-5">
+        {/* =========================
+            MARKET PRICES
+        ========================== */}
 
+        <div className="bg-white rounded-2xl shadow-lg p-5">
           <h3 className="font-bold text-green-700 mb-4">
             📈 {t.marketPrices}
           </h3>
 
           <div className="space-y-2">
-
             <div className="flex justify-between">
               <span>{t.tomato}</span>
               <span>₹25</span>
@@ -228,26 +472,24 @@ const t = translations[language];
               <span>{t.jasmine}</span>
               <span>₹700</span>
             </div>
-
           </div>
         </div>
-
       </section>
 
-      {/* Tourist Places */}
+      {/* =========================
+          TOURIST PLACES
+      ========================== */}
+
       <section
         id="tourism"
         className="max-w-7xl mx-auto px-6 pb-8"
       >
-
         <div className="bg-white rounded-2xl shadow-lg p-6">
-
           <h2 className="text-2xl font-bold text-green-700 mb-6">
             📍 {t.touristPlaces}
           </h2>
 
           <div className="grid md:grid-cols-3 gap-6">
-
             <div className="border rounded-xl p-4">
               🏰 {t.atturFort}
             </div>
@@ -259,27 +501,24 @@ const t = translations[language];
             <div className="border rounded-xl p-4">
               🌊 {t.vasistaRiver}
             </div>
-
           </div>
         </div>
       </section>
 
-      {/* Future Sections
-          We will build these later.
-          IDs are already prepared for navigation.
-      */}
+      {/* =========================
+          FUTURE SECTIONS
+      ========================== */}
 
-      <div id="government"></div>
       <div id="events"></div>
-      <div id="temples"></div>
-      <div id="emergency"></div>
+
       <div id="bus"></div>
 
-      {/* Footer */}
+      {/* =========================
+          FOOTER
+      ========================== */}
+
       <footer className="bg-gray-900 text-white mt-10">
-
         <div className="max-w-7xl mx-auto py-10 text-center px-6">
-
           <h3 className="text-2xl font-bold">
             {t.siteName}
           </h3>
@@ -290,24 +529,16 @@ const t = translations[language];
 
           <div className="border-t border-gray-700 my-6"></div>
 
-          {/* Tamil Disclaimer */}
           <p className="text-sm text-gray-400 leading-7 max-w-4xl mx-auto">
-
             <strong>{t.disclaimerTitle}</strong>{" "}
             {t.disclaimer}
-
           </p>
-
-
 
           <p className="text-xs text-gray-500 mt-6">
             {t.rights}
           </p>
-
         </div>
-
       </footer>
-
     </main>
   );
 }
