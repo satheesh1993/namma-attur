@@ -7,43 +7,44 @@ import { translations } from "@/data/translations";
 
 export default function Navbar() {
   const { language } = useLanguage();
-
   const t = translations[language];
 
   return (
     <>
       {/* Top Bar */}
-      <div className="bg-green-900 text-white">
-        <div className="max-w-7xl mx-auto px-6 py-2 flex justify-between items-center">
+ <div className="max-w-7xl mx-auto px-6 py-2 flex items-center justify-between gap-6">
 
-          <span>
-            📍 {t.location}
-          </span>
+  {/* Location */}
+  <span className="shrink-0">
+    📍 {t.location}
+  </span>
 
-          <div className="flex items-center gap-4">
+  {/* Disclaimer */}
+          <div className="flex-1 flex justify-center">
+            <span className="bg-yellow-300 text-gray-900 px-4 py-1 rounded-md text-sm font-semibold text-center shadow-sm">
+              {t.headerDisclaimer}
+            </span>
+          </div>
+
+          {/* Weather + Language */}
+          <div className="flex items-center gap-4 shrink-0">
             <span>☀️ {t.weather}</span>
-
             <LanguageToggle />
           </div>
 
         </div>
-      </div>
 
       {/* Main Header */}
       <header className="bg-white shadow">
         <div className="max-w-7xl mx-auto px-6 py-4">
+          <div className="flex items-center justify-between gap-6">
 
-          {/* Logo + Register */}
-          <div className="flex justify-between items-center">
-
-            {/* Logo and Website Name */}
+            {/* Logo / Website Name */}
             <Link
               href="/"
-              className="flex items-center gap-4"
+              className="flex items-center gap-4 shrink-0"
             >
-              <div className="text-5xl">
-                🏰
-              </div>
+              <div className="text-5xl">🏰</div>
 
               <div>
                 <h1 className="text-4xl font-bold text-green-700">
@@ -56,71 +57,66 @@ export default function Navbar() {
               </div>
             </Link>
 
+            {/* Navigation */}
+            <nav className="flex-1">
+              <div className="flex flex-wrap justify-center items-center gap-5">
+                <Link
+                  href="/"
+                  className="font-medium text-gray-700 hover:text-green-700"
+                >
+                  {t.home}
+                </Link>
+
+                <Link
+                  href="/about-attur"
+                  className="font-medium text-gray-700 hover:text-green-700"
+                >
+                  {t.attur}
+                </Link>
+
+                <Link
+                  href="/tourist-places"
+                  className="font-medium text-gray-700 hover:text-green-700"
+                >
+                  {t.tourism}
+                </Link>
+
+                <Link
+                  href="/#jobs"
+                  className="font-medium text-gray-700 hover:text-green-700"
+                >
+                  {t.jobs}
+                </Link>
+
+                <Link
+                  href="/#businesses"
+                  className="font-medium text-gray-700 hover:text-green-700"
+                >
+                  {t.businesses}
+                </Link>
+
+                <Link
+                  href="/#news"
+                  className="font-medium text-gray-700 hover:text-green-700"
+                >
+                  {t.news}
+                </Link>
+
+                <Link
+                  href="/#government"
+                  className="font-medium text-gray-700 hover:text-green-700"
+                >
+                  {t.government}
+                </Link>
+              </div>
+            </nav>
+
             {/* Register Button */}
-            <button className="bg-green-700 text-white px-5 py-3 rounded-xl hover:bg-green-800">
+            <button className="bg-green-700 text-white px-5 py-3 rounded-xl hover:bg-green-800 shrink-0">
               + {t.register}
             </button>
 
           </div>
-
-          {/* Navigation Menu */}
-          <nav className="mt-5 border-t pt-4">
-
-            <div className="flex flex-wrap justify-center gap-8">
-
-              <Link
-                href="/"
-                className="font-medium text-gray-700 hover:text-green-700"
-              >
-                {t.home}
-              </Link>
-
-              <Link
-                href="/about-attur"
-                className="font-medium text-gray-700 hover:text-green-700"
-              >
-                {t.attur}
-              </Link>
-
-              <Link
-                href="/tourist-places"
-                className="font-medium text-gray-700 hover:text-green-700"
-              >
-                {t.tourism}
-              </Link>
-
-              <Link
-                href="/#jobs"
-                className="font-medium text-gray-700 hover:text-green-700"
-              >
-                {t.jobs}
-              </Link>
-
-              <Link
-                href="/#businesses"
-                className="font-medium text-gray-700 hover:text-green-700"
-              >
-                {t.businesses}
-              </Link>
-
-              <Link
-                href="/#news"
-                className="font-medium text-gray-700 hover:text-green-700"
-              >
-                {t.news}
-              </Link>
-
-              <Link
-                href="/#government"
-                className="font-medium text-gray-700 hover:text-green-700"
-              >
-                {t.government}
-              </Link>
-
-            </div>
-
-          </nav>
-
         </div>
       </header>
     </>

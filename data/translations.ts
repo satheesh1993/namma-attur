@@ -122,6 +122,9 @@ export const translations = {
       "நம்ம ஆத்தூர் என்பது ஆத்தூர் தாலுக்காவை பற்றிய தகவல்களை பொதுமக்களுடன் பகிர்வதற்காக உருவாக்கப்பட்ட தனியார் சமூக தகவல் தளம். இந்த இணையதளம் எந்த அரசு துறை, அரசு நிறுவனம், உள்ளாட்சி அமைப்பு அல்லது அரசு சார்ந்த அமைப்புகளுடனும் தொடர்புடையதல்ல. அரசு சேவைகள் மற்றும் அறிவிப்புகள் தொடர்பான தகவல்களுக்கு அதிகாரப்பூர்வ அரசு இணையதளங்களைப் பயன்படுத்துமாறு பார்வையாளர்கள் கேட்டுக்கொள்ளப்படுகிறார்கள்.",
 
     rights: "© 2026 Namma Attur. அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.",
+
+    headerDisclaimer:
+  "⚠️ இது ஒரு தனியார் சமூக தகவல் இணையதளம். இது அரசு அதிகாரப்பூர்வ இணையதளம் அல்ல.",
   },
 
   en: {
@@ -203,6 +206,9 @@ export const translations = {
     vasistaRiver: "Vasista River",
     vasistaRiverDescription:
       "An important river flowing through the Attur region.",
+
+      headerDisclaimer:
+  "⚠️ This is an independent community website and is not an official Government website.",
 
     // About Attur
     aboutAtturTitle: "About Attur",

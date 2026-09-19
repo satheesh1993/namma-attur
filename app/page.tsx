@@ -1,5 +1,6 @@
 "use client";
 
+
 import Navbar from "@/components/Navbar";
 import { useLanguage } from "@/components/LanguageContext";
 import { translations } from "@/data/translations";
@@ -30,7 +31,7 @@ const t = translations[language];
         className="relative h-[500px] flex items-center justify-center"
         style={{
           backgroundImage:
-            "url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee')",
+            "url('/images/hero/attur-hero.png')",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
@@ -252,13 +253,7 @@ const t = translations[language];
 
           </p>
 
-          {/* English Disclaimer */}
-          <p className="text-sm text-gray-500 mt-4 max-w-4xl mx-auto">
 
-            <strong>{t.footerDisclaimerTitle}</strong>{" "}
-            {t.footerDisclaimer}
-
-          </p>
 
           <p className="text-xs text-gray-500 mt-6">
             {t.rights}
