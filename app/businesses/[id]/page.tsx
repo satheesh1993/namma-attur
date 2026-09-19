@@ -22,12 +22,11 @@ export default function BusinessDetailsPage() {
   if (!business) {
     return (
       <main className="min-h-screen bg-slate-100">
-
         <Navbar />
 
-        <section className="max-w-6xl mx-auto px-6 py-20 text-center">
+        <section className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-20 text-center">
 
-          <h1 className="text-3xl font-bold text-red-600">
+          <h1 className="text-2xl sm:text-3xl font-bold text-red-600 leading-tight">
             {language === "ta"
               ? "வணிகம் கிடைக்கவில்லை"
               : "Business Not Found"}
@@ -36,7 +35,9 @@ export default function BusinessDetailsPage() {
           <Link
             href="/businesses"
             className="
-              inline-block
+              inline-flex
+              items-center
+              justify-center
               mt-6
               bg-amber-600
               text-white
@@ -44,6 +45,9 @@ export default function BusinessDetailsPage() {
               py-3
               rounded-lg
               hover:bg-amber-700
+              active:bg-amber-800
+              transition
+              min-h-[48px]
             "
           >
             {language === "ta"
@@ -54,7 +58,6 @@ export default function BusinessDetailsPage() {
         </section>
 
         <Footer />
-
       </main>
     );
   }
@@ -67,22 +70,26 @@ export default function BusinessDetailsPage() {
       {/* =========================
           BUSINESS HEADER
       ========================== */}
-      <section className="bg-amber-600 text-white py-12">
 
-        <div className="max-w-6xl mx-auto px-6">
+      <section className="bg-amber-600 text-white py-8 sm:py-10 md:py-12">
+
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
 
           {/* CATEGORY */}
-          <p className="text-amber-100 mb-2">
+
+          <p className="text-amber-100 mb-2 text-sm sm:text-base">
             {business.category[language]}
           </p>
 
           {/* BUSINESS NAME */}
-          <h1 className="text-4xl md:text-5xl font-bold">
+
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
             {business.name[language]}
           </h1>
 
           {/* LOCATION */}
-          <p className="mt-4 text-lg">
+
+          <p className="mt-3 sm:mt-4 text-base sm:text-lg">
             📍 {business.location[language]}
           </p>
 
@@ -93,17 +100,20 @@ export default function BusinessDetailsPage() {
       {/* =========================
           BUSINESS CONTENT
       ========================== */}
-      <section className="max-w-6xl mx-auto px-6 py-10">
 
-        <div className="grid lg:grid-cols-3 gap-8">
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-10">
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-8">
 
           {/* MAIN CONTENT */}
+
           <div className="lg:col-span-2">
 
             <div className="bg-white rounded-2xl shadow-md overflow-hidden">
 
               {/* IMAGE */}
-              <div className="h-64 md:h-96 bg-gray-200">
+
+              <div className="h-56 sm:h-72 md:h-96 bg-gray-200">
 
                 <img
                   src={business.image}
@@ -114,15 +124,16 @@ export default function BusinessDetailsPage() {
               </div>
 
               {/* DESCRIPTION */}
-              <div className="p-6 md:p-8">
 
-                <h2 className="text-2xl font-bold text-amber-600 mb-4">
+              <div className="p-5 sm:p-6 md:p-8">
+
+                <h2 className="text-xl sm:text-2xl font-bold text-amber-600 mb-4">
                   {language === "ta"
                     ? "வணிகம் பற்றி"
                     : "About the Business"}
                 </h2>
 
-                <p className="text-gray-700 leading-8 text-lg">
+                <p className="text-gray-700 leading-8 text-base sm:text-lg">
                   {business.description[language]}
                 </p>
 
@@ -133,17 +144,19 @@ export default function BusinessDetailsPage() {
           </div>
 
           {/* BUSINESS DETAILS */}
+
           <div>
 
-            <div className="bg-white rounded-2xl shadow-md p-6">
+            <div className="bg-white rounded-2xl shadow-md p-5 sm:p-6">
 
-              <h2 className="text-xl font-bold text-amber-600 mb-5">
+              <h2 className="text-lg sm:text-xl font-bold text-amber-600 mb-5">
                 {language === "ta"
                   ? "வணிக விவரங்கள்"
                   : "Business Details"}
               </h2>
 
               {/* CATEGORY */}
+
               <div className="mb-5">
 
                 <p className="text-sm text-gray-500">
@@ -152,13 +165,14 @@ export default function BusinessDetailsPage() {
                     : "Category"}
                 </p>
 
-                <p className="font-semibold text-gray-800 mt-1">
+                <p className="font-semibold text-gray-800 mt-1 leading-6">
                   🏷️ {business.category[language]}
                 </p>
 
               </div>
 
               {/* LOCATION */}
+
               <div className="mb-5">
 
                 <p className="text-sm text-gray-500">
@@ -167,13 +181,14 @@ export default function BusinessDetailsPage() {
                     : "Location"}
                 </p>
 
-                <p className="font-semibold text-gray-800 mt-1">
+                <p className="font-semibold text-gray-800 mt-1 leading-6">
                   📍 {business.location[language]}
                 </p>
 
               </div>
 
               {/* PHONE */}
+
               <div className="mb-6">
 
                 <p className="text-sm text-gray-500">
@@ -182,17 +197,21 @@ export default function BusinessDetailsPage() {
                     : "Phone"}
                 </p>
 
-                <p className="font-semibold text-gray-800 mt-1">
+                <p className="font-semibold text-gray-800 mt-1 leading-6">
                   📞 {business.phone}
                 </p>
 
               </div>
 
               {/* CALL BUTTON */}
+
               <a
                 href={`tel:${business.phone}`}
                 className="
-                  block
+                  flex
+                  items-center
+                  justify-center
+                  w-full
                   text-center
                   bg-amber-600
                   text-white
@@ -200,7 +219,10 @@ export default function BusinessDetailsPage() {
                   py-3
                   rounded-lg
                   hover:bg-amber-700
+                  active:bg-amber-800
                   transition
+                  min-h-[48px]
+                  font-medium
                 "
               >
                 📞{" "}
@@ -212,12 +234,16 @@ export default function BusinessDetailsPage() {
             </div>
 
             {/* BACK LINK */}
+
             <Link
               href="/businesses"
               className="
-                block
+                flex
+                items-center
+                justify-center
                 text-center
                 mt-4
+                min-h-[48px]
                 text-amber-700
                 font-medium
                 hover:underline

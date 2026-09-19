@@ -22,8 +22,8 @@ export default function JobDetailsPage() {
       <main className="min-h-screen bg-slate-100">
         <Navbar />
 
-        <section className="max-w-6xl mx-auto px-6 py-20 text-center">
-          <h1 className="text-3xl font-bold text-red-600">
+        <section className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-20 text-center">
+          <h1 className="text-2xl sm:text-3xl font-bold text-red-600 leading-tight">
             {language === "ta"
               ? "வேலைவாய்ப்பு கிடைக்கவில்லை"
               : "Job Not Found"}
@@ -31,7 +31,21 @@ export default function JobDetailsPage() {
 
           <Link
             href="/jobs"
-            className="inline-block mt-6 bg-green-700 text-white px-6 py-3 rounded-lg hover:bg-green-800"
+            className="
+              inline-flex
+              items-center
+              justify-center
+              mt-6
+              bg-green-700
+              text-white
+              px-6
+              py-3
+              rounded-lg
+              hover:bg-green-800
+              active:bg-green-900
+              transition
+              min-h-[48px]
+            "
           >
             {language === "ta"
               ? "வேலைவாய்ப்புகளுக்கு திரும்பு"
@@ -51,18 +65,19 @@ export default function JobDetailsPage() {
       {/* =========================
           JOB HEADER
       ========================== */}
-      <section className="bg-green-700 text-white py-12">
-        <div className="max-w-6xl mx-auto px-6">
 
-          <p className="text-green-100 mb-2">
+      <section className="bg-green-700 text-white py-8 sm:py-10 md:py-12">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+
+          <p className="text-green-100 mb-2 text-sm sm:text-base">
             {job.company[language]}
           </p>
 
-          <h1 className="text-4xl md:text-5xl font-bold">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
             {job.title[language]}
           </h1>
 
-          <p className="mt-4 text-lg">
+          <p className="mt-3 sm:mt-4 text-base sm:text-lg">
             📍 {job.location[language]}
           </p>
 
@@ -72,24 +87,26 @@ export default function JobDetailsPage() {
       {/* =========================
           JOB CONTENT
       ========================== */}
-      <section className="max-w-6xl mx-auto px-6 py-10">
 
-        <div className="grid lg:grid-cols-3 gap-8">
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-10">
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-8">
 
           {/* =========================
               DESCRIPTION
           ========================== */}
+
           <div className="lg:col-span-2">
 
-            <div className="bg-white rounded-2xl shadow-md p-8">
+            <div className="bg-white rounded-2xl shadow-md p-5 sm:p-6 md:p-8">
 
-              <h2 className="text-2xl font-bold text-green-700 mb-4">
+              <h2 className="text-xl sm:text-2xl font-bold text-green-700 mb-4">
                 {language === "ta"
                   ? "வேலை விவரம்"
                   : "Job Description"}
               </h2>
 
-              <p className="text-gray-700 leading-8">
+              <p className="text-gray-700 leading-7 sm:leading-8">
                 {job.description[language]}
               </p>
 
@@ -100,17 +117,19 @@ export default function JobDetailsPage() {
           {/* =========================
               JOB DETAILS
           ========================== */}
+
           <div>
 
-            <div className="bg-white rounded-2xl shadow-md p-6">
+            <div className="bg-white rounded-2xl shadow-md p-5 sm:p-6">
 
-              <h2 className="text-xl font-bold text-green-700 mb-5">
+              <h2 className="text-lg sm:text-xl font-bold text-green-700 mb-5">
                 {language === "ta"
                   ? "வேலை விவரங்கள்"
                   : "Job Details"}
               </h2>
 
               {/* Salary */}
+
               <div className="mb-5">
                 <p className="text-sm text-gray-500">
                   {language === "ta"
@@ -118,12 +137,13 @@ export default function JobDetailsPage() {
                     : "Salary"}
                 </p>
 
-                <p className="font-semibold text-gray-800 mt-1">
+                <p className="font-semibold text-gray-800 mt-1 leading-6">
                   💰 {job.salary[language]}
                 </p>
               </div>
 
               {/* Job Type */}
+
               <div className="mb-5">
                 <p className="text-sm text-gray-500">
                   {language === "ta"
@@ -131,12 +151,13 @@ export default function JobDetailsPage() {
                     : "Job Type"}
                 </p>
 
-                <p className="font-semibold text-gray-800 mt-1">
+                <p className="font-semibold text-gray-800 mt-1 leading-6">
                   💼 {job.type[language]}
                 </p>
               </div>
 
               {/* Location */}
+
               <div className="mb-5">
                 <p className="text-sm text-gray-500">
                   {language === "ta"
@@ -144,12 +165,13 @@ export default function JobDetailsPage() {
                     : "Location"}
                 </p>
 
-                <p className="font-semibold text-gray-800 mt-1">
+                <p className="font-semibold text-gray-800 mt-1 leading-6">
                   📍 {job.location[language]}
                 </p>
               </div>
 
               {/* Posted Date */}
+
               <div className="mb-6">
                 <p className="text-sm text-gray-500">
                   {language === "ta"
@@ -157,16 +179,20 @@ export default function JobDetailsPage() {
                     : "Posted Date"}
                 </p>
 
-                <p className="font-semibold text-gray-800 mt-1">
+                <p className="font-semibold text-gray-800 mt-1 leading-6">
                   📅 {job.postedDate}
                 </p>
               </div>
 
               {/* Contact */}
+
               <a
                 href={`tel:${job.contact}`}
                 className="
-                  block
+                  flex
+                  items-center
+                  justify-center
+                  w-full
                   text-center
                   bg-green-700
                   text-white
@@ -174,7 +200,10 @@ export default function JobDetailsPage() {
                   py-3
                   rounded-lg
                   hover:bg-green-800
+                  active:bg-green-900
                   transition
+                  min-h-[48px]
+                  font-medium
                 "
               >
                 📞{" "}
@@ -186,12 +215,16 @@ export default function JobDetailsPage() {
             </div>
 
             {/* Back to Jobs */}
+
             <Link
               href="/jobs"
               className="
-                block
+                flex
+                items-center
+                justify-center
                 text-center
                 mt-4
+                min-h-[48px]
                 text-green-700
                 font-medium
                 hover:underline

@@ -13,61 +13,102 @@ export default function GovernmentPage() {
 
   return (
     <main className="min-h-screen bg-slate-100">
+
       <Navbar />
 
-      {/* Header */}
-      <section className="bg-purple-700 text-white py-12">
-        <div className="max-w-6xl mx-auto px-6">
-          <h1 className="text-4xl md:text-5xl font-bold">
+      {/* =========================
+          HEADER
+      ========================== */}
+
+      <section className="bg-purple-700 text-white py-8 sm:py-10 md:py-12">
+
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
             {language === "ta"
               ? "அரசு சேவைகள்"
               : "Government Services"}
           </h1>
 
-          <p className="mt-3 text-lg text-purple-100">
+          <p className="mt-3 text-base sm:text-lg text-purple-100 leading-7">
             {language === "ta"
               ? "ஆத்தூர் மற்றும் சுற்றியுள்ள பகுதிகளுக்கான முக்கியமான அரசு சேவைகள் மற்றும் தகவல்கள்"
               : "Important government services and information for Attur and surrounding areas"}
           </p>
+
         </div>
+
       </section>
 
-      {/* Services */}
-      <section className="max-w-6xl mx-auto px-6 py-10">
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {/* =========================
+          SERVICES
+      ========================== */}
+
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-10">
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+
           {governmentServices.map((service) => (
+
             <Link
               key={service.id}
               href={`/government/${service.id}`}
-              className="bg-white rounded-2xl shadow-md p-6 hover:shadow-xl hover:-translate-y-1 transition"
+              className="
+                bg-white
+                rounded-2xl
+                shadow-md
+                p-5
+                sm:p-6
+                hover:shadow-xl
+                hover:-translate-y-1
+                active:scale-[0.99]
+                transition
+                min-h-[48px]
+              "
             >
+
+              {/* ICON */}
+
               <div className="w-14 h-14 rounded-full bg-purple-100 flex items-center justify-center text-2xl">
                 🏛️
               </div>
 
-              <h2 className="text-xl font-bold text-gray-900 mt-5">
+              {/* SERVICE NAME */}
+
+              <h2 className="text-lg sm:text-xl font-bold text-gray-900 mt-5 leading-7">
                 {service.name[language]}
               </h2>
+
+              {/* CATEGORY */}
 
               <p className="text-sm text-purple-700 font-medium mt-2">
                 {service.category[language]}
               </p>
 
-              <p className="text-gray-600 mt-3 leading-7">
+              {/* DESCRIPTION */}
+
+              <p className="text-gray-600 mt-3 leading-7 text-sm sm:text-base">
                 {service.description[language]}
               </p>
+
+              {/* VIEW DETAILS */}
 
               <div className="mt-5 text-purple-700 font-medium">
                 {language === "ta"
                   ? "மேலும் தகவல் →"
                   : "View Details →"}
               </div>
+
             </Link>
+
           ))}
+
         </div>
+
       </section>
 
       <Footer />
+
     </main>
   );
 }
