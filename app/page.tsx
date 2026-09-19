@@ -1,12 +1,26 @@
 "use client";
 
-
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import { useLanguage } from "@/components/LanguageContext";
 import { translations } from "@/data/translations";
 
 export default function Home() {
 const { language } = useLanguage();
+const router = useRouter();
+
+const [searchQuery, setSearchQuery] = useState("");
+
+const handleSearch = () => {
+  const query = searchQuery.trim();
+
+  if (!query) {
+    return;
+  }
+
+  router.push(`/search?q=${encodeURIComponent(query)}`);
+};
 
 const t = translations[language];
 
@@ -50,14 +64,45 @@ const t = translations[language];
 
           <div className="max-w-3xl bg-white rounded-2xl mx-auto p-2 flex shadow-2xl">
 
-            <input
+           <input
               type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  handleSearch();
+                }
+              }}
               placeholder={t.searchPlaceholder}
-              className="flex-1 px-5 py-4 text-black outline-none"
+              className="
+                flex-1
+                px-4
+                py-3
+                rounded-l-lg
+                border
+                border-gray-300
+                bg-white
+                text-gray-900
+                placeholder:text-gray-500
+                outline-none
+                focus:ring-2
+                focus:ring-green-500
+              "
             />
 
-            <button className="bg-green-600 text-white px-10 py-4 rounded-xl">
-              {t.search}
+            <button
+              onClick={handleSearch}
+              className="
+                bg-green-700
+                text-white
+                px-6
+                py-3
+                rounded-r-lg
+                hover:bg-green-800
+                transition
+              "
+            >
+              🔍 {t.search}
             </button>
 
           </div>
