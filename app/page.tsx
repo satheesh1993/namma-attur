@@ -259,11 +259,7 @@ export default function Home() {
           ADVERTISEMENT
       ========================== */}
 
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 mt-6">
-        <div className="bg-yellow-50 border border-yellow-300 rounded-xl p-4 text-center text-base sm:text-xl font-semibold">
-          📢 {t.advertisement}
-        </div>
-      </section>
+ 
 
       {/* =========================
           DASHBOARD CARDS
@@ -327,58 +323,64 @@ export default function Home() {
             LATEST JOBS
         ========================== */}
 
-        <div
-          id="jobs"
-          className="bg-white rounded-2xl shadow-lg p-5"
-        >
-          <div className="flex items-center justify-between gap-3 mb-4">
-            <h3 className="font-bold text-green-700">
-              💼 {t.latestJobs}
-            </h3>
+        {/* =========================
+    LATEST JOBS
+========================== */}
 
-            <button
-              onClick={() => router.push("/jobs")}
-              className="text-sm text-green-600 hover:underline whitespace-nowrap"
-            >
-              {language === "ta" ? "அனைத்தும்" : "View All"}
-            </button>
-          </div>
+<div
+  id="jobs"
+  className="bg-white rounded-2xl shadow-lg p-5"
+>
+  <div className="flex items-start justify-between gap-3 mb-5">
+    <h3 className="font-bold text-green-700 text-lg leading-7">
+      💼 {t.latestJobs}
+    </h3>
 
-          <div className="space-y-4">
-            {latestJobs.map((job) => (
-              <button
-                key={job.id}
-                onClick={() => router.push(`/jobs/${job.id}`)}
-                className="
-                  block
-                  w-full
-                  text-left
-                  border-b
-                  border-gray-100
-                  pb-3
-                  last:border-0
-                  hover:bg-green-50
-                  active:bg-green-100
-                  rounded-lg
-                  p-2
-                  transition
-                "
-              >
-                <p className="font-medium text-gray-800 leading-6">
-                  {job.title[language]}
-                </p>
+    <button
+      onClick={() => router.push("/jobs")}
+      className="shrink-0 text-sm text-green-600 hover:underline whitespace-nowrap"
+    >
+      {language === "ta" ? "அனைத்தும்" : "View All"}
+    </button>
+  </div>
 
-                <p className="text-sm text-gray-600 mt-1">
-                  🏢 {job.company[language]}
-                </p>
+  <div className="space-y-3">
+    {latestJobs.map((job) => (
+      <button
+        key={job.id}
+        onClick={() => router.push(`/jobs/${job.id}`)}
+        className="
+          block
+          w-full
+          text-left
+          border-b
+          border-gray-100
+          pb-4
+          pt-1
+          last:border-0
+          last:pb-1
+          hover:bg-green-50
+          rounded-lg
+          px-3
+          py-3
+          transition
+        "
+      >
+        <p className="font-semibold text-gray-900 text-base leading-6">
+          {job.title[language]}
+        </p>
 
-                <p className="text-xs text-gray-500 mt-1">
-                  📍 {job.location[language]}
-                </p>
-              </button>
-            ))}
-          </div>
-        </div>
+        <p className="text-sm text-gray-600 mt-2 leading-5">
+          🏢 {job.company[language]}
+        </p>
+
+        <p className="text-xs text-gray-500 mt-1.5 leading-5">
+          📍 {job.location[language]}
+        </p>
+      </button>
+    ))}
+  </div>
+</div>
 
         {/* =========================
             FEATURED BUSINESSES
