@@ -331,18 +331,28 @@ export default function Home() {
   id="jobs"
   className="bg-white rounded-2xl shadow-lg p-5"
 >
-  <div className="flex items-start justify-between gap-3 mb-5">
-    <h3 className="font-bold text-green-700 text-lg leading-7">
-      💼 {t.latestJobs}
-    </h3>
+<div
+  className={
+    language === "ta"
+      ? "flex flex-col gap-2 mb-5"
+      : "flex items-center justify-between gap-3 mb-5"
+  }
+>
+  <h3 className="font-bold text-green-700 text-lg leading-7 break-words">
+    💼 {t.latestJobs}
+  </h3>
 
-    <button
-      onClick={() => router.push("/jobs")}
-      className="shrink-0 text-sm text-green-600 hover:underline whitespace-nowrap"
-    >
-      {language === "ta" ? "அனைத்தும்" : "View All"}
-    </button>
-  </div>
+  <button
+    onClick={() => router.push("/jobs")}
+    className={
+      language === "ta"
+        ? "self-end text-sm text-green-600 hover:underline whitespace-nowrap"
+        : "shrink-0 text-sm text-green-600 hover:underline whitespace-nowrap"
+    }
+  >
+    {language === "ta" ? "அனைத்தும்" : "View All"}
+  </button>
+</div>
 
   <div className="space-y-3">
     {latestJobs.map((job) => (
