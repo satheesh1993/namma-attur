@@ -9,7 +9,7 @@ import { transportServices } from "@/data/transport";
 import { events } from "@/data/events";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://www.nammaattur.com";
+  const baseUrl = "https://www.nammaattur.in";
 
   const staticPages: MetadataRoute.Sitemap = [
     {
