@@ -51,6 +51,17 @@ export default function Footer() {
               : "Privacy Policy"}
           </Link>
 
+          <span className="text-gray-600">|</span>
+
+          <Link
+            href="/terms-and-conditions"
+            className="text-gray-400 hover:text-white transition"
+          >
+            {language === "ta"
+              ? "விதிமுறைகள்"
+              : "Terms & Conditions"}
+          </Link>
+
         </div>
 
         <p className="text-xs text-gray-500 mt-6">
@@ -62,4 +73,4 @@ export default function Footer() {
       </div>
     </footer>
   );
-}
+}      

@@ -2,9 +2,10 @@
 
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+
 import { useLanguage } from "@/components/LanguageContext";
 
 import { jobs } from "@/data/jobs";
@@ -16,7 +17,7 @@ import { emergencyServices } from "@/data/emergency";
 import { transportServices } from "@/data/transport";
 import { events } from "@/data/events";
 
-export default function SearchPage() {
+function SearchPageContent() {
   const searchParams = useSearchParams();
   const { language } = useLanguage();
 
@@ -47,7 +48,7 @@ export default function SearchPage() {
     }
 
     return 0;
-  };
+  }
 
   // =========================
   // JOBS
@@ -731,7 +732,20 @@ export default function SearchPage() {
         )}
       </section>
 
-      <Footer />
+     
     </main>
+  );
+}
+export default function SearchPage() {
+  return (
+    <Suspense
+      fallback={
+        <main className="min-h-screen bg-slate-100 flex items-center justify-center">
+          <p className="text-gray-600">Loading search...</p>
+        </main>
+      }
+    >
+      <SearchPageContent />
+    </Suspense>
   );
 }
