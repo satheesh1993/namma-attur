@@ -5,6 +5,7 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useLanguage } from "@/components/LanguageContext";
+import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 
 import { events } from "@/data/events";
 
@@ -17,10 +18,22 @@ export default function EventsPage() {
       new Date(b.date).getTime()
   );
 
-  return (
-    <main className="min-h-screen bg-slate-100">
+return (
+  <main className="min-h-screen bg-slate-100">
 
-      <Navbar />
+    <BreadcrumbSchema
+      items={[
+        {
+          name: {
+            ta: "நிகழ்வுகள்",
+            en: "Events",
+          },
+          url: "https://www.nammaattur.in/events",
+        },
+      ]}
+    />
+
+    <Navbar />
 
       {/* =========================
           HEADER
