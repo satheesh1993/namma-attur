@@ -1,7 +1,7 @@
 "use client";
 
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+
 import { useLanguage } from "@/components/LanguageContext";
 import { translations } from "@/data/translations";
 import BreadcrumbSchema from "@/components/BreadcrumbSchema";
@@ -118,7 +118,7 @@ return (
         </div>
       </section>
 
-      <Footer />
+      
     </main>
   );
 }

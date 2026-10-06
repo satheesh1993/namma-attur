@@ -3,7 +3,7 @@
 import Link from "next/link";
 
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+
 import { useLanguage } from "@/components/LanguageContext";
 import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 import { transportServices } from "@/data/transport";
@@ -119,7 +119,7 @@ return (
 
       </section>
 
-      <Footer />
+      
 
     </main>
   );

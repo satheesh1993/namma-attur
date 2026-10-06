@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+
 import { useLanguage } from "@/components/LanguageContext";
 
 import { governmentServices } from "@/data/government";
@@ -63,7 +63,7 @@ export default function GovernmentDetailsPage() {
 
         </section>
 
-        <Footer />
+        
 
       </main>
     );
@@ -239,7 +239,7 @@ return (
 
       </section>
 
-      <Footer />
+      
 
     </main>
   );

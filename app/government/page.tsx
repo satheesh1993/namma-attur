@@ -3,7 +3,7 @@
 import Link from "next/link";
 
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+
 import { useLanguage } from "@/components/LanguageContext";
 
 import { governmentServices } from "@/data/government";
@@ -120,7 +120,7 @@ return (
 
       </section>
 
-      <Footer />
+      
 
     </main>
   );

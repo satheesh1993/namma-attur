@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+
 import { useLanguage } from "@/components/LanguageContext";
 import { jobs } from "@/data/jobs";
 import BreadcrumbSchema from "@/components/BreadcrumbSchema";
@@ -54,7 +54,7 @@ export default function JobDetailsPage() {
           </Link>
         </section>
 
-        <Footer />
+        
       </main>
     );
   }
@@ -262,7 +262,7 @@ return (
 
       </section>
 
-      <Footer />
+      
     </main>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+
 import { useLanguage } from "@/components/LanguageContext";
 import { translations } from "@/data/translations";
 
@@ -104,7 +104,7 @@ export default function AboutAtturPage() {
         </div>
       </section>
 
-      <Footer />
+      
     </main>
   );
 }

@@ -3,7 +3,7 @@
 import Link from "next/link";
 
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+
 import { useLanguage } from "@/components/LanguageContext";
 
 import { emergencyServices } from "@/data/emergency";
@@ -171,7 +171,7 @@ export default function EmergencyPage() {
 
       </section>
 
-      <Footer />
+      
 
     </main>
   );

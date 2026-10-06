@@ -4,7 +4,7 @@ import Link from "next/link";
 import { jobs } from "@/data/jobs";
 import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+
 import { useLanguage } from "@/components/LanguageContext";
 
 
@@ -192,7 +192,7 @@ return (
 
       </section>
 
-      <Footer />
+      
     </main>
   );
 }
