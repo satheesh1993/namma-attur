@@ -7,6 +7,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useLanguage } from "@/components/LanguageContext";
 import { jobs } from "@/data/jobs";
+import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 
 export default function JobDetailsPage() {
   const { language } = useLanguage();
@@ -58,9 +59,28 @@ export default function JobDetailsPage() {
     );
   }
 
-  return (
-    <main className="min-h-screen bg-slate-100">
-      <Navbar />
+return (
+  <main className="min-h-screen bg-slate-100">
+    <BreadcrumbSchema
+      items={[
+        {
+          name: {
+            ta: "வேலைவாய்ப்புகள்",
+            en: "Jobs",
+          },
+          url: "https://www.nammaattur.in/jobs",
+        },
+        {
+          name: {
+            ta: job.title.ta,
+            en: job.title.en,
+          },
+          url: `https://www.nammaattur.in/jobs/${job.id}`,
+        },
+      ]}
+    />
+
+    <Navbar />
 
       {/* =========================
           JOB HEADER

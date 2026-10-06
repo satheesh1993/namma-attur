@@ -1,18 +1,31 @@
 "use client";
 
 import Link from "next/link";
-
+import { jobs } from "@/data/jobs";
+import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useLanguage } from "@/components/LanguageContext";
-import { jobs } from "@/data/jobs";
+
 
 export default function JobsPage() {
   const { language } = useLanguage();
 
-  return (
-    <main className="min-h-screen bg-slate-100">
-      <Navbar />
+return (
+  <main className="min-h-screen bg-slate-100">
+    <BreadcrumbSchema
+      items={[
+        {
+          name: {
+            ta: "வேலைவாய்ப்புகள்",
+            en: "Jobs",
+          },
+          url: "https://www.nammaattur.in/jobs",
+        },
+      ]}
+    />
+
+    <Navbar />
 
       {/* =========================
           JOBS HERO
