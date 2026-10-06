@@ -5,16 +5,28 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useLanguage } from "@/components/LanguageContext";
-
+import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 import { transportServices } from "@/data/transport";
 
 export default function TransportPage() {
   const { language } = useLanguage();
 
-  return (
-    <main className="min-h-screen bg-slate-100">
+return (
+  <main className="min-h-screen bg-slate-100">
 
-      <Navbar />
+    <BreadcrumbSchema
+      items={[
+        {
+          name: {
+            ta: "போக்குவரத்து",
+            en: "Transport",
+          },
+          url: "https://www.nammaattur.in/transport",
+        },
+      ]}
+    />
+
+    <Navbar />
 
       {/* =========================
           HEADER
