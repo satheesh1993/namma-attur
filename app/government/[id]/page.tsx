@@ -8,6 +8,7 @@ import Footer from "@/components/Footer";
 import { useLanguage } from "@/components/LanguageContext";
 
 import { governmentServices } from "@/data/government";
+import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 
 export default function GovernmentDetailsPage() {
   const { language } = useLanguage();
@@ -68,10 +69,29 @@ export default function GovernmentDetailsPage() {
     );
   }
 
-  return (
-    <main className="min-h-screen bg-slate-100">
+return (
+  <main className="min-h-screen bg-slate-100">
 
-      <Navbar />
+    <BreadcrumbSchema
+      items={[
+        {
+          name: {
+            ta: "அரசு சேவைகள்",
+            en: "Government Services",
+          },
+          url: "https://www.nammaattur.in/government",
+        },
+        {
+          name: {
+            ta: service.name.ta,
+            en: service.name.en,
+          },
+          url: `https://www.nammaattur.in/government/${service.id}`,
+        },
+      ]}
+    />
+
+    <Navbar />
 
       {/* =========================
           SERVICE HEADER
