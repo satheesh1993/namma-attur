@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useLanguage } from "@/components/LanguageContext";
 import { posts } from "@/data/posts";
+import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 
 export default function NewsPage() {
   const { language } = useLanguage();
@@ -17,9 +18,22 @@ export default function NewsPage() {
       new Date(a.publishedDate).getTime()
   );
 
-  return (
-    <main className="min-h-screen bg-slate-100">
-      <Navbar />
+return (
+  <main className="min-h-screen bg-slate-100">
+
+    <BreadcrumbSchema
+      items={[
+        {
+          name: {
+            ta: "செய்திகள்",
+            en: "News",
+          },
+          url: "https://www.nammaattur.in/news",
+        },
+      ]}
+    />
+
+    <Navbar />
 
       {/* =========================
           NEWS HERO

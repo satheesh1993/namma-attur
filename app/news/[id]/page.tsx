@@ -7,6 +7,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useLanguage } from "@/components/LanguageContext";
 import { posts } from "@/data/posts";
+import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 
 export default function NewsDetailsPage() {
   const { language } = useLanguage();
@@ -58,9 +59,29 @@ export default function NewsDetailsPage() {
     );
   }
 
-  return (
-    <main className="min-h-screen bg-slate-100">
-      <Navbar />
+return (
+  <main className="min-h-screen bg-slate-100">
+
+    <BreadcrumbSchema
+      items={[
+        {
+          name: {
+            ta: "செய்திகள்",
+            en: "News",
+          },
+          url: "https://www.nammaattur.in/news",
+        },
+        {
+          name: {
+            ta: post.title.ta,
+            en: post.title.en,
+          },
+          url: `https://www.nammaattur.in/news/${post.id}`,
+        },
+      ]}
+    />
+
+    <Navbar />
 
       {/* =========================
           POST HEADER
