@@ -7,6 +7,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useLanguage } from "@/components/LanguageContext";
 import { businesses } from "@/data/businesses";
+import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 
 export default function BusinessDetailsPage() {
   const { language } = useLanguage();
@@ -62,10 +63,29 @@ export default function BusinessDetailsPage() {
     );
   }
 
-  return (
-    <main className="min-h-screen bg-slate-100">
+return (
+  <main className="min-h-screen bg-slate-100">
 
-      <Navbar />
+    <BreadcrumbSchema
+      items={[
+        {
+          name: {
+            ta: "வணிகங்கள்",
+            en: "Businesses",
+          },
+          url: "https://www.nammaattur.in/businesses",
+        },
+        {
+          name: {
+            ta: business.name.ta,
+            en: business.name.en,
+          },
+          url: `https://www.nammaattur.in/businesses/${business.id}`,
+        },
+      ]}
+    />
+
+    <Navbar />
 
       {/* =========================
           BUSINESS HEADER
