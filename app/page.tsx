@@ -111,9 +111,29 @@ export default function Home() {
     },
   ];
 
-  return (
-    <main className="min-h-screen bg-slate-100">
-      <Navbar />
+return (
+  <main className="min-h-screen bg-slate-100">
+    <Navbar />
+
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "@id": "https://www.nammaattur.in/#organization",
+          name: "நம்ம ஆத்தூர் | Namma Attur",
+          alternateName: "Namma Attur",
+          url: "https://www.nammaattur.in/",
+          description:
+            "நம்ம ஆத்தூர் - ஆத்தூர் மற்றும் சுற்றியுள்ள பகுதிகளுக்கான உள்ளூர் தகவல்கள், வேலைவாய்ப்புகள், வணிகங்கள், சுற்றுலா, அரசு சேவைகள், கோவில்கள், நிகழ்வுகள் மற்றும் முக்கிய தகவல்கள்."
+        }),
+      }}
+    />
+
+    {/* =========================
+        HERO SECTION
+    ========================== */}
 
       {/* =========================
           HERO SECTION
