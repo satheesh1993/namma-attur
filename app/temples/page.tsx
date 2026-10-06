@@ -5,16 +5,29 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useLanguage } from "@/components/LanguageContext";
+import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 
 import { temples } from "@/data/temples";
 
 export default function TemplesPage() {
   const { language } = useLanguage();
 
-  return (
-    <main className="min-h-screen bg-slate-100">
+return (
+  <main className="min-h-screen bg-slate-100">
 
-      <Navbar />
+    <BreadcrumbSchema
+      items={[
+        {
+          name: {
+            ta: "கோவில்கள்",
+            en: "Temples",
+          },
+          url: "https://www.nammaattur.in/temples",
+        },
+      ]}
+    />
+
+    <Navbar />
 
       {/* =========================
           HEADER
